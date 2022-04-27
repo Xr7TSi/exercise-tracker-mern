@@ -17,21 +17,6 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// this is the http://localhost:5000/exercises/:id
-router.patch('/:id', (req, res) => {   
-    Exercise.findByIdAndUpdate(req.params.id, req.body)
-        .then(() => res.json('Exercise updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-// this is the http://localhost:5000/exercises/:id
-router.delete('/:id', (req, res) => {
-    Exercise.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Exercise deleted.'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-
 // this is the http://localhost:5000/exercises/add route
 router.post('/add', (req, res) => {
     const username = req.body.username;
@@ -51,11 +36,20 @@ router.post('/add', (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.get('/:id', (req, res) => {
-    Exercise.findById(req.params.id)
-        .then(exercise => res.json(exercise))
+// this is the http://localhost:5000/exercises/:id
+router.patch('/:id', (req, res) => {   
+    Exercise.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => res.json('Exercise updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
+// this is the http://localhost:5000/exercises/:id
+router.delete('/:id', (req, res) => {
+    Exercise.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Exercise deleted.'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 
 
 module.exports = router;
