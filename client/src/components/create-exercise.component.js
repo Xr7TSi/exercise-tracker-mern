@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 
-export const CreateExercise = () => {
-  return (
-    <div>This is the create exercise component!</div>
-  ) 
-};
+export default class CreateExercise extends Component {
+  render() {
+    return <div>This is the create exercise component!</div>;
+  }
+}

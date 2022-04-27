@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 
-export const CreateUser = () => {
-  return (
-    <div>This is the create user component!</div>
-  ) 
-};
+export default class CreateUser extends Component {
+  render() {
+    return <div>This is the create user component!</div>;
+  }
+}

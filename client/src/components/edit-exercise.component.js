@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 
-export const EditExercise = () => {
-  return (
-    <div>This is the edit exercise component!</div>
-  ) 
-};
+export default class EditExercise extends Component {
+  render() {
+    return <div>This is the edit exercise component!</div>;
+  }
+}
