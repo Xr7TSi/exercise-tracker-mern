@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
+import axios from "axios";
 
 import "react-datepicker/dist/react-datepicker.css";
-
-
 
 export default class CreateExercise extends Component {
   constructor(props) {
@@ -24,10 +23,15 @@ export default class CreateExercise extends Component {
     };
   }
 
+  // get method gets all usernames. those names are then mapped for the dropdown.
   componentDidMount() {
-    this.setState({
-      users: ["test user"],
-      username: "test user",
+    axios.get("http://localhost:5000/users/").then((res) => {
+      if (res.data.length > 0) {
+        this.setState({
+          users: res.data.map((user) => user.username),
+          username: res.data[0].username,
+        });
+      }
     });
   }
 
@@ -58,6 +62,10 @@ export default class CreateExercise extends Component {
 
     console.log(exercise);
 
+    axios
+      .post("http://localhost:5000/exercises/add", exercise)
+      .then((res) => console.log(res.data));
+
     window.location = "/";
   }
 
@@ -69,7 +77,6 @@ export default class CreateExercise extends Component {
           <div className="form-group">
             <label>Username: </label>
             <select
-              ref="userInput"
               required
               className="form-control"
               value={this.state.username}
@@ -112,7 +119,7 @@ export default class CreateExercise extends Component {
               />
             </div>
           </div>
-          <br/>
+          <br />
           <div className="form-group">
             <input
               type="submit"
