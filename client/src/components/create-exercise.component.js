@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 
-// import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -105,13 +105,14 @@ export default class CreateExercise extends Component {
           </div>
           <div className="form-group">
             <label>Date: </label>
-            {/* <div>
+            <div>
               <DatePicker
                 selected={this.state.date}
                 onChange={this.onChangeDate}
               />
-            </div> */}
+            </div>
           </div>
+          <br/>
           <div className="form-group">
             <input
               type="submit"
